@@ -46,7 +46,8 @@ const WeatherCards = ({ city ,index}) => {
 
 
   return (
-    <div className = {`h-80 md:72  grid grid-rows-2 relative group text-xs md:text-base ${cardBackgroundColor}`}>
+    <div className = {`h-80 md:72  grid grid-rows-2 relative text-xs md:text-base ${cardBackgroundColor}`}>
+      
       <div className="grid grid-cols-5 p-6">
         <div className="col-span-3">
           <div className="flex flex-col justify-center items-center">
@@ -78,7 +79,7 @@ const WeatherCards = ({ city ,index}) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-3   items-center bg-gray-700">
+      <div className="grid grid-cols-3   items-center bg-gray-700 font-semibold ">
         <div className="h-full col-span-1 flex flex-col justify-center items-center text-sm relative">
         <div>Pressure: {city.main.pressure}hPa </div>
           <div>Humidity: {city.main.humidity}% </div>
@@ -98,9 +99,9 @@ const WeatherCards = ({ city ,index}) => {
             {city.wind.speed}m/s {city.wind.deg} Degree
           </div>
 
-          <div className="border-r border-gray-600 absolute h-20 top-8 bottom-5 right-0"></div>
+          <div className="border-r  border-gray-600 absolute h-20 top-8 bottom-5 right-0"></div>
         </div>
-        <div className="h-full col-span-1 flex flex-col justify-center items-center">
+        <div className="h-full col-span-1 flex flex-col justify-center items-center  ">
           <div>
             Sunrise: {sunriseDate.toLocaleTimeString("en-US", timeOptions)}
           </div>
