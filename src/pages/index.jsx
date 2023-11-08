@@ -5,11 +5,13 @@ import axios from "axios";
 import { loadCitiesData } from "../utils/loadCities";
 import { getWeather } from "../api/api";
 
-export default function Home({weatherData}) {
+export default function Home({ weatherData }) {
   return (
     <main className="py-12 m-auto w-4/5 ">
-      <HomeSection />
-      <WeatherSection weather={weatherData}/>
+      <div>
+        <HomeSection />
+        <WeatherSection weather={weatherData} />
+      </div>
     </main>
   );
 }
@@ -22,6 +24,6 @@ export const getServerSideProps = async () => {
   });
   const weatherData = await Promise.all(weatherRes);
   return {
-    props: {weatherData: weatherData},
+    props: { weatherData: weatherData },
   };
 };

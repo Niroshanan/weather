@@ -7,8 +7,8 @@ const WeatherSection = ({ weather }) => {
   return (
     <div className="grid md:grid-cols-2 gap-8 md:gap-12 ">
       {weather.map((city, i) => (
-        <Link href={`/city/${city.id}`} key={i}>
-          <WeatherCards city={city} />
+        <Link href={{ pathname: `/city/${city.id}`, query: { index: i } }}key={i}>
+          <WeatherCards city={city} index = {i} />
         </Link>
       ))}
     </div>
