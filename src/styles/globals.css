@@ -19,6 +19,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   background-image: url('../../public/Icon/Dashboard.png');
+  background-attachment: fixed;
   
   /* background: linear-gradient(
       to bottom,
