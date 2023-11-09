@@ -72,7 +72,7 @@ const SingleWeatherCard = ({ city, index }) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-3   items-center bg-gray-700">
+      <div className="grid grid-cols-3   items-center bg-gray-700 text-center">
         <div className="h-full col-span-1 flex flex-col justify-center items-center relative ">
           <div>Pressure: {city.main.pressure}hPa </div>
           <div>Humidity: {city.main.humidity}% </div>

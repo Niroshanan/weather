@@ -77,8 +77,8 @@ const WeatherCards = ({ city ,index}) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-3   items-center bg-gray-700 font-semibold ">
-        <div className="h-full col-span-1 flex flex-col justify-center items-center text-sm relative">
+      <div className="grid grid-cols-3   items-center bg-gray-700 font-semibold text-center">
+        <div className="h-full col-span-1 flex flex-col justify-center items-center  text-sm relative">
         <div>Pressure: {city.main.pressure}hPa </div>
           <div>Humidity: {city.main.humidity}% </div>
           <div>Visibility: {((city.visibility)/1000).toFixed(1)}Km </div>
@@ -99,7 +99,7 @@ const WeatherCards = ({ city ,index}) => {
 
           <div className="border-r  border-gray-600 absolute h-20 top-8 bottom-5 right-0"></div>
         </div>
-        <div className="h-full col-span-1 flex flex-col justify-center items-center  ">
+        <div className="h-full col-span-1 flex flex-col justify-center items-center ">
           <div>
             Sunrise: {sunriseDate}
           </div>
