@@ -17,7 +17,6 @@ const SingleWeatherCard = ({ city, index }) => {
   }
 
   const t = city.dt;
-  const Timestamp = new Date(t * 1000);
   const timeOptions = {
     hour: "numeric",
     minute: "numeric",
@@ -28,15 +27,19 @@ const SingleWeatherCard = ({ city, index }) => {
     month: "short",
     day: "numeric",
   };
-  const formattedTime = Timestamp.toLocaleString("en-US", timeOptions);
-  const formattedDate = Timestamp.toLocaleString("en-US", dateOptions);
+  const dateFormatter = new Intl.DateTimeFormat('en-US', dateOptions);
+  const formattedDate = dateFormatter.format(t);
+  
+  const timeFormatter = new Intl.DateTimeFormat('en-US', timeOptions);
+  const formattedTime = timeFormatter.format(t);
+
   const date = `${formattedTime}, ${formattedDate}`;
 
   const sunriseTimestamp = city.sys.sunrise;
-  const sunriseDate = new Date(sunriseTimestamp * 1000);
+  const sunriseDate = timeFormatter.format(sunriseTimestamp);
 
   const sunsetTimestamp = city.sys.sunset;
-  const sunsetDate = new Date(sunsetTimestamp * 1000);
+  const sunsetDate = timeFormatter.format(sunsetTimestamp);
 
   return (
     <div
@@ -93,10 +96,10 @@ const SingleWeatherCard = ({ city, index }) => {
         </div>
         <div className="h-full col-span-1 flex flex-col justify-center items-center">
           <div>
-            Sunrise: {sunriseDate.toLocaleTimeString("en-US", timeOptions)}
+            Sunrise: {sunriseDate}
           </div>
           <div>
-            Sunset: {sunsetDate.toLocaleTimeString("en-US", timeOptions)}
+            Sunset: {sunsetDate}
           </div>
         </div>
       </div>

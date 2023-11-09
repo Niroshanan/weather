@@ -2,26 +2,21 @@ import Image from "next/image";
 import React from "react";
 
 const WeatherCards = ({ city ,index}) => {
-  let bgindex =index%5; 
+  let bgindex = index % 5;
   let cardBackgroundColor;
-  if(bgindex %5 == 0 ){
-    cardBackgroundColor = "bg-blue-500"
-  }
-  else if(bgindex %5 == 1 ){
-    cardBackgroundColor = "bg-purple-500"
-  }else if(bgindex %5 == 2 ){
-    cardBackgroundColor = "bg-green-500"
-  }else if(bgindex %5 == 3 ){
-    cardBackgroundColor = "bg-orange-500"
-  }else if(bgindex %5 == 4 ){
-    cardBackgroundColor = "bg-red-500"
-  }
-  else{
-    cardBackgroundColor = "bg-blue-500"
+  if (bgindex % 5 == 0) {
+    cardBackgroundColor = "bg-blue-500";
+  } else if (bgindex % 5 == 1) {
+    cardBackgroundColor = "bg-purple-500";
+  } else if (bgindex % 5 == 2) {
+    cardBackgroundColor = "bg-green-500";
+  } else if (bgindex % 5 == 3) {
+    cardBackgroundColor = "bg-orange-500";
+  } else if (bgindex % 5 == 4) {
+    cardBackgroundColor = "bg-red-500";
   }
 
   const t = city.dt;
-  const Timestamp = new Date(t * 1000);
   const timeOptions = {
     hour: "numeric",
     minute: "numeric",
@@ -32,17 +27,19 @@ const WeatherCards = ({ city ,index}) => {
     month: "short",
     day: "numeric",
   };
+  const dateFormatter = new Intl.DateTimeFormat('en-US', dateOptions);
+  const formattedDate = dateFormatter.format(t);
+  
+  const timeFormatter = new Intl.DateTimeFormat('en-US', timeOptions);
+  const formattedTime = timeFormatter.format(t);
 
-  const formattedTime = Timestamp.toLocaleString("en-US", timeOptions);
-  const formattedDate = Timestamp.toLocaleString("en-US", dateOptions);
   const date = `${formattedTime}, ${formattedDate}`;
 
   const sunriseTimestamp = city.sys.sunrise;
-  const sunriseDate = new Date(sunriseTimestamp * 1000);
+  const sunriseDate = timeFormatter.format(sunriseTimestamp);
 
   const sunsetTimestamp = city.sys.sunset;
-  const sunsetDate = new Date(sunsetTimestamp * 1000);
-
+  const sunsetDate = timeFormatter.format(sunsetTimestamp);
 
 
   return (
@@ -104,10 +101,10 @@ const WeatherCards = ({ city ,index}) => {
         </div>
         <div className="h-full col-span-1 flex flex-col justify-center items-center  ">
           <div>
-            Sunrise: {sunriseDate.toLocaleTimeString("en-US", timeOptions)}
+            Sunrise: {sunriseDate}
           </div>
           <div>
-            Sunset: {sunsetDate.toLocaleTimeString("en-US", timeOptions)}
+            Sunset: {sunsetDate}
           </div>
         </div>
       </div>
