@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const WeatherCards = ({ city ,index}) => {
+const WeatherCards = ({ city, index }) => {
   let bgindex = index % 5;
   let cardBackgroundColor;
   if (bgindex % 5 == 0) {
@@ -33,30 +33,28 @@ const WeatherCards = ({ city ,index}) => {
   const formattedDate = Timestamp.toLocaleString("en-US", dateOptions);
   const date = `${formattedTime}, ${formattedDate}`;
 
-  const sunriseTimestamp = city.sys.sunrise;
-  const sunriseTime = new Date(sunriseTimestamp * 1000).toLocaleDateString();
-
-  const sunsetTimestamp = city.sys.sunset;
-  const sunsetTime = new Date(sunsetTimestamp * 1000).toLocaleDateString();
-
+  const sr = city.sys.sunrise;
+  const sunriseTimestamp = new Date(sr * 1000);
+  const sunriseTime = sunriseTimestamp.toLocaleString("en-US", timeOptions);
+  const ss = city.sys.sunset;
+  const sunsetTimestamp = new Date(ss * 1000);
+  const sunsetTime = sunsetTimestamp.toLocaleString("en-US", timeOptions);
 
   return (
-    <div className = {`h-80 md:72  grid grid-rows-2 relative text-xs md:text-base ${cardBackgroundColor}`}>
-      
+    <div
+      className={`h-80 md:72  grid grid-rows-2 relative text-xs md:text-base ${cardBackgroundColor}`}
+    >
       <div className="grid grid-cols-5 p-6">
         <div className="col-span-3">
           <div className="flex flex-col justify-center items-center">
             <div className="sm:text-xl font-bold text-sm">
               {city.name}, {city.sys.country}
             </div>
-            <div>
-              {date}
-            </div>
+            <div>{date}</div>
             <div className=" grid grid-cols-2 justify-center items-center">
               <div className=" flex justify-center">
                 <Image
-                  src={`/Icon/few clouds.png`}
-                  // src={`/Icon/${city.weather[0].description}.png`}
+                  src={`/Icon/${city.weather[0].description}.png`}
                   width={25}
                   height={25}
                   alt={`${city.weather[0].description}.png`}
@@ -79,9 +77,9 @@ const WeatherCards = ({ city ,index}) => {
 
       <div className="grid grid-cols-3   items-center bg-gray-700 font-semibold text-center">
         <div className="h-full col-span-1 flex flex-col justify-center items-center  text-sm relative">
-        <div>Pressure: {city.main.pressure}hPa </div>
+          <div>Pressure: {city.main.pressure}hPa </div>
           <div>Humidity: {city.main.humidity}% </div>
-          <div>Visibility: {((city.visibility)/1000).toFixed(1)}Km </div>
+          <div>Visibility: {(city.visibility / 1000).toFixed(1)}Km </div>
           <div className="border-r border-gray-600 absolute h-20 top-8 bottom-5 right-0"></div>
         </div>
         <div className=" h-full col-span-1 flex flex-col justify-center items-center relative ">
@@ -100,16 +98,12 @@ const WeatherCards = ({ city ,index}) => {
           <div className="border-r  border-gray-600 absolute h-20 top-8 bottom-5 right-0"></div>
         </div>
         <div className="h-full col-span-1 flex flex-col justify-center items-center ">
-          <div>
-            Sunrise: {sunriseTime}
-          </div>
-          <div>
-            Sunset: {sunsetTime}
-          </div>
+          <div>Sunrise: {sunriseTime}</div>
+          <div>Sunset: {sunsetTime}</div>
         </div>
       </div>
     </div>
   );
 };
 
-export default WeatherCards;  
+export default WeatherCards;

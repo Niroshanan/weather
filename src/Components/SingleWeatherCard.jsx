@@ -26,16 +26,15 @@ const SingleWeatherCard = ({ city, index }) => {
   const dateOptions = {
     month: "short",
     day: "numeric",
-  };  
+  };
   const formattedTime = Timestamp.toLocaleString("en-US", timeOptions);
   const formattedDate = Timestamp.toLocaleString("en-US", dateOptions);
   const date = `${formattedTime}, ${formattedDate}`;
 
-  const sr = city.sys.sunrise
+  const sr = city.sys.sunrise;
   const sunriseTimestamp = new Date(sr * 1000);
-
   const sunriseTime = sunriseTimestamp.toLocaleString("en-US", timeOptions);
-  const ss = city.sys.sunset
+  const ss = city.sys.sunset;
   const sunsetTimestamp = new Date(ss * 1000);
   const sunsetTime = sunsetTimestamp.toLocaleString("en-US", timeOptions);
 
@@ -54,18 +53,19 @@ const SingleWeatherCard = ({ city, index }) => {
         <div className="col-span-1 flex flex-col items-center relative border-r ">
           <div>
             <Image
-                  src={`/Icon/few clouds.png`}
-                  // src={`/Icon/${city.weather[0].description}.png`}
+              src={`/Icon/${city.weather[0].description}.png`}
               width={40}
               height={40}
               alt={`${city.weather[0].description}.png`}
             />
           </div>
-          <div>{city.weather[0].description}</div>        
+          <div>{city.weather[0].description}</div>
         </div>
 
         <div className="col-span-1 flex flex-col items-center">
-          <div className="text-4xl font-bold">{Math.round(city.main.temp)}&#8451;</div>
+          <div className="text-4xl font-bold">
+            {Math.round(city.main.temp)}&#8451;
+          </div>
           <div>Temp Min: {Math.round(city.main.temp_min)}&#8451;</div>
           <div>Temp Max: {Math.round(city.main.temp_max)}&#8451;</div>
         </div>
@@ -75,7 +75,7 @@ const SingleWeatherCard = ({ city, index }) => {
         <div className="h-full col-span-1 flex flex-col justify-center items-center relative ">
           <div>Pressure: {city.main.pressure}hPa </div>
           <div>Humidity: {city.main.humidity}% </div>
-          <div>Visibility: {((city.visibility)/1000).toFixed(1)}Km </div>
+          <div>Visibility: {(city.visibility / 1000).toFixed(1)}Km </div>
           <div className="border-r border-gray-600 absolute h-20 top-5 bottom-5 right-0"></div>
         </div>
         <div className=" h-full col-span-1 flex flex-col justify-center items-center relative ">
@@ -94,12 +94,8 @@ const SingleWeatherCard = ({ city, index }) => {
           <div className="border-r border-gray-600 absolute h-20 top-5 bottom-5 right-0"></div>
         </div>
         <div className="h-full col-span-1 flex flex-col justify-center items-center">
-          <div>
-            Sunrise: {sunriseTime}
-          </div>
-          <div>
-            Sunset: {sunsetTime}
-          </div>
+          <div>Sunrise: {sunriseTime}</div>
+          <div>Sunset: {sunsetTime}</div>
         </div>
       </div>
     </div>
