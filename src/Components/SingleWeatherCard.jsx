@@ -26,13 +26,7 @@ const SingleWeatherCard = ({ city, index }) => {
   const dateOptions = {
     month: "short",
     day: "numeric",
-  };
-  const dateFormatter = new Intl.DateTimeFormat('en-US', dateOptions);
-  const formattedDate = dateFormatter.format(t);
-  
-  const timeFormatter = new Intl.DateTimeFormat('en-US', timeOptions);
-  const formattedTime = timeFormatter.format(t);
-  
+  };  
   const formattedTime = Timestamp.toLocaleString("en-US", timeOptions);
   const formattedDate = Timestamp.toLocaleString("en-US", dateOptions);
   const date = `${formattedTime}, ${formattedDate}`;
