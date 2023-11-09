@@ -55,8 +55,8 @@ const WeatherCards = ({ city ,index}) => {
             <div className=" grid grid-cols-2 justify-center items-center">
               <div className=" flex justify-center">
                 <Image
-                  src={`/Icon/few clouds.png`}
-                  // src={`/Icon/${city.weather[0].description}.png`}
+                  // src={`/Icon/few clouds.png`}
+                  src={`/Icon/${city.weather[0].description}.png`}
                   width={25}
                   height={25}
                   alt={`${city.weather[0].description}.png`}
