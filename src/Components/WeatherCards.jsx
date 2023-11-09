@@ -101,10 +101,10 @@ const WeatherCards = ({ city ,index}) => {
         </div>
         <div className="h-full col-span-1 flex flex-col justify-center items-center ">
           <div>
-            Sunrise: 
+            Sunrise: {sunriseTime}
           </div>
           <div>
-            Sunset: 
+            Sunset: {sunsetTime}
           </div>
         </div>
       </div>
