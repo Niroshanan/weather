@@ -51,30 +51,31 @@ const WeatherCards = ({ city ,index}) => {
       <div className="grid grid-cols-5 p-6">
         <div className="col-span-3">
           <div className="flex flex-col justify-center items-center">
-            <p className="sm:text-xl font-bold text-sm">
+            <div className="sm:text-xl font-bold text-sm">
               {city.name}, {city.sys.country}
-            </p>
-            <p>{date}</p>
+            </div>
+            <div>{date}</div>
             <div className=" grid grid-cols-2 justify-center items-center">
               <div className=" flex justify-center">
                 <Image
-                  src={`/Icon/${city.weather[0].description}.png`}
+                  src={`/Icon/few clouds.png`}
+                  // src={`/Icon/${city.weather[0].description}.png`}
                   width={25}
                   height={25}
                   alt={`${city.weather[0].description}.png`}
                 />
               </div>
               <div className=" flex items-center justify-center">
-                <p>{city.weather[0].description}</p>
+                <div>{city.weather[0].description}</div>
               </div>
             </div>
           </div>
         </div>
         <div className="col-span-2">
           <div className="flex flex-col justify-center items-center">
-            <p className="text-3xl">{city.main.temp} &#8451;</p>
-            <p>Temp Min: {Math.round(city.main.temp_min)}&#8451;</p>
-            <p>Temp Max: {Math.round(city.main.temp_max)}&#8451;</p>
+            <div className="text-3xl">{city.main.temp} &#8451;</div>
+            <div>Temp Min: {Math.round(city.main.temp_min)}&#8451;</div>
+            <div>Temp Max: {Math.round(city.main.temp_max)}&#8451;</div>
           </div>
         </div>
       </div>
