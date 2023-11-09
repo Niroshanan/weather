@@ -17,6 +17,7 @@ const WeatherCards = ({ city ,index}) => {
   }
 
   const t = city.dt;
+  const Timestamp = new Date(t * 1000);
   const timeOptions = {
     hour: "numeric",
     minute: "numeric",
@@ -27,19 +28,16 @@ const WeatherCards = ({ city ,index}) => {
     month: "short",
     day: "numeric",
   };
-  const dateFormatter = new Intl.DateTimeFormat('en-US', dateOptions);
-  const formattedDate = dateFormatter.format(t);
-  
-  const timeFormatter = new Intl.DateTimeFormat('en-US', timeOptions);
-  const formattedTime = timeFormatter.format(t);
 
+  const formattedTime = Timestamp.toLocaleString("en-US", timeOptions);
+  const formattedDate = Timestamp.toLocaleString("en-US", dateOptions);
   const date = `${formattedTime}, ${formattedDate}`;
 
-  const sunriseTimestamp = city.sys.sunrise;
-  const sunriseDate = timeFormatter.format(sunriseTimestamp);
+  // const sunriseTimestamp = city.sys.sunrise;
+  // const sunriseTime = new Date(sunriseTimestamp * 1000).toLocaleDateString();
 
-  const sunsetTimestamp = city.sys.sunset;
-  const sunsetDate = timeFormatter.format(sunsetTimestamp);
+  // const sunsetTimestamp = city.sys.sunset;
+  // const sunsetTime = new Date(sunsetTimestamp * 1000).toLocaleDateString();
 
 
   return (
@@ -51,12 +49,14 @@ const WeatherCards = ({ city ,index}) => {
             <div className="sm:text-xl font-bold text-sm">
               {city.name}, {city.sys.country}
             </div>
-            <div>{date}</div>
+            <div>
+              {date}
+            </div>
             <div className=" grid grid-cols-2 justify-center items-center">
               <div className=" flex justify-center">
                 <Image
-                  // src={`/Icon/few clouds.png`}
-                  src={`/Icon/${city.weather[0].description}.png`}
+                  src={`/Icon/few clouds.png`}
+                  // src={`/Icon/${city.weather[0].description}.png`}
                   width={25}
                   height={25}
                   alt={`${city.weather[0].description}.png`}
@@ -101,10 +101,10 @@ const WeatherCards = ({ city ,index}) => {
         </div>
         <div className="h-full col-span-1 flex flex-col justify-center items-center ">
           <div>
-            Sunrise: {sunriseDate}
+            Sunrise: 
           </div>
           <div>
-            Sunset: {sunsetDate}
+            Sunset: 
           </div>
         </div>
       </div>
@@ -112,4 +112,4 @@ const WeatherCards = ({ city ,index}) => {
   );
 };
 
-export default WeatherCards;
+export default WeatherCards;  

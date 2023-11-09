@@ -17,12 +17,12 @@ const SingleWeatherCard = ({ city, index }) => {
   }
 
   const t = city.dt;
+  const Timestamp = new Date(t * 1000);
   const timeOptions = {
     hour: "numeric",
     minute: "numeric",
     hour12: true,
   };
-
   const dateOptions = {
     month: "short",
     day: "numeric",
@@ -32,14 +32,18 @@ const SingleWeatherCard = ({ city, index }) => {
   
   const timeFormatter = new Intl.DateTimeFormat('en-US', timeOptions);
   const formattedTime = timeFormatter.format(t);
-
+  
+  const formattedTime = Timestamp.toLocaleString("en-US", timeOptions);
+  const formattedDate = Timestamp.toLocaleString("en-US", dateOptions);
   const date = `${formattedTime}, ${formattedDate}`;
 
-  const sunriseTimestamp = city.sys.sunrise;
-  const sunriseDate = timeFormatter.format(sunriseTimestamp);
+  const sr = city.sys.sunrise
+  const sunriseTimestamp = new Date(sr * 1000);
 
-  const sunsetTimestamp = city.sys.sunset;
-  const sunsetDate = timeFormatter.format(sunsetTimestamp);
+  const sunriseTime = sunriseTimestamp.toLocaleString("en-US", timeOptions);
+  const ss = city.sys.sunset
+  const sunsetTimestamp = new Date(ss * 1000);
+  const sunsetTime = sunsetTimestamp.toLocaleString("en-US", timeOptions);
 
   return (
     <div
@@ -56,7 +60,8 @@ const SingleWeatherCard = ({ city, index }) => {
         <div className="col-span-1 flex flex-col items-center relative border-r ">
           <div>
             <Image
-              src={`/Icon/${city.weather[0].description}.png`}
+                  src={`/Icon/few clouds.png`}
+                  // src={`/Icon/${city.weather[0].description}.png`}
               width={40}
               height={40}
               alt={`${city.weather[0].description}.png`}
@@ -96,10 +101,10 @@ const SingleWeatherCard = ({ city, index }) => {
         </div>
         <div className="h-full col-span-1 flex flex-col justify-center items-center">
           <div>
-            Sunrise: {sunriseDate}
+            Sunrise: {sunriseTime}
           </div>
           <div>
-            Sunset: {sunsetDate}
+            Sunset: {sunsetTime}
           </div>
         </div>
       </div>
