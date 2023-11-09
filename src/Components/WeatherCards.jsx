@@ -33,11 +33,11 @@ const WeatherCards = ({ city ,index}) => {
   const formattedDate = Timestamp.toLocaleString("en-US", dateOptions);
   const date = `${formattedTime}, ${formattedDate}`;
 
-  // const sunriseTimestamp = city.sys.sunrise;
-  // const sunriseTime = new Date(sunriseTimestamp * 1000).toLocaleDateString();
+  const sunriseTimestamp = city.sys.sunrise;
+  const sunriseTime = new Date(sunriseTimestamp * 1000).toLocaleDateString();
 
-  // const sunsetTimestamp = city.sys.sunset;
-  // const sunsetTime = new Date(sunsetTimestamp * 1000).toLocaleDateString();
+  const sunsetTimestamp = city.sys.sunset;
+  const sunsetTime = new Date(sunsetTimestamp * 1000).toLocaleDateString();
 
 
   return (
