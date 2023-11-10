@@ -46,7 +46,7 @@ const SingleWeatherCard = ({ city, index }) => {
         <div className="text-3xl font-bold">
           {city.name},{city.sys.country}
         </div>
-        <div>{date}</div>
+        <div>{date.toString()}</div>
       </div>
 
       <div className="grid grid-cols-2 p-6 ">
@@ -94,8 +94,8 @@ const SingleWeatherCard = ({ city, index }) => {
           <div className="border-r border-gray-600 absolute h-20 top-5 bottom-5 right-0"></div>
         </div>
         <div className="h-full col-span-1 flex flex-col justify-center items-center">
-          <div>Sunrise: {sunriseTime}</div>
-          <div>Sunset: {sunsetTime}</div>
+          <div>Sunrise: {sunriseTime.toString()}</div>
+          <div>Sunset: {sunsetTime.toString()}</div>
         </div>
       </div>
     </div>
