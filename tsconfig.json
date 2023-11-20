@@ -21,7 +21,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/utils/appToast.js"  ],
   "exclude": [
     "node_modules"
   ]
