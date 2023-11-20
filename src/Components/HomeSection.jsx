@@ -15,7 +15,7 @@ const HomeSection = () => {
         <h1 className="appName ">Weather App</h1>
       </div>
 
-      <div className=" searchBox ">
+      <div className="searchBox">
         <input
           type="text"
           className="city-input"
