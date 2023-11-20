@@ -20,11 +20,39 @@ body {
   color: rgb(var(--foreground-rgb));
   background-image: url('../../public/Icon/Dashboard.png');
   background-attachment: fixed;
-  
+
   /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  background-color: rgb(31 41 55 );
+  color: rgb(255 255 255);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.weatherSection {
+  display: grid;
+  gap: 32px;
+  @media (min-width: 900px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 48px/* 48px */;
+  }
+}
+
+.main{
+  padding-top: 48px;
+  padding-bottom: 48px;
+  margin: auto;
+  width: 80%;
 }
