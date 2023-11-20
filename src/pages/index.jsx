@@ -8,43 +8,48 @@ import { getWeather } from "../api/api";
 import { useQuery } from "react-query";
 
 export default function Home() {
-  const {
-    data: weatherData,
-    error,
-    isError,
-    isLoading,
-  } = useQuery({
-    queryKey: ["cityWeather"],
-    queryFn: loadWeatherData,
-    staleTime: 5 * 60 * 1000,
-  });
+  const [weatherData, setWeatherData] = useState([]);
+
+  useEffect(() => {
+    loadWeatherData();
+  }, []);
 
   async function loadWeatherData() {
     try {
-      const cities = await loadCitiesData();
+      const cachedData = localStorage.getItem("weatherData");
+      const cachedTimestamp = localStorage.getItem("weatherDataTimestamp");
 
+      if (cachedData && cachedTimestamp) {
+        const currentTime = new Date().getTime();
+        const expirationTime = parseInt(cachedTimestamp, 10) + 5 * 60 * 1000;
+
+        if (currentTime < expirationTime) {
+          setWeatherData(JSON.parse(cachedData));
+          return;
+        }
+      }
+
+      const cities = await loadCitiesData();
       const weatherRes = await Promise.all(
         cities.map(async (city) => {
           return await getWeather(city.CityCode);
         })
       );
-      return weatherRes;
-    } catch (error) {
-      throw error;
+
+      setWeatherData(weatherRes);
+
+      localStorage.setItem("weatherData", JSON.stringify(weatherRes));
+      localStorage.setItem("weatherDataTimestamp", new Date().getTime().toString());
+    } catch (err) {
+      throw(err)
     }
   }
-
-  useEffect(() => {
-    if (isError) {
-      appToast(error.message, "error");
-    }
-  }, [isError]);
 
   return (
     <main className="main">
       <div>
         <HomeSection />
-        {!error && !isLoading && (<WeatherSection weather={weatherData} />)}
+        {weatherData && (<WeatherSection weather={weatherData} />)}
       </div>
     </main>
   );
