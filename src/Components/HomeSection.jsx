@@ -10,7 +10,6 @@ const HomeSection = () => {
           width={50}
           height={50}
           alt="logo"
-          style={{ width: "auto", height: "auto" }}
         />
         <h1 className="appName ">Weather App</h1>
       </div>
