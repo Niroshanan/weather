@@ -4,7 +4,7 @@ export const getCachedWeatherData = () => {
 
   if (cachedData && cachedTimestamp) {
     const currentTime = new Date().getTime();
-    const expirationTime = parseInt(cachedTimestamp, 10) + 1 * 60 * 1000;
+    const expirationTime = parseInt(cachedTimestamp, 10) + 5 * 60 * 1000;
 
     if (currentTime < expirationTime) {
       return JSON.parse(cachedData);

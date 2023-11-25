@@ -30,8 +30,6 @@ export default function index() {
       setSelectedCity(city);
     }
   }, [weatherData]);
-
-  console.log("single" , selectedCity);
   return (
     <div className="single-city">
       <div className="single-city-logo ">
