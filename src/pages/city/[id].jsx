@@ -7,7 +7,7 @@ import { loadWeatherData } from "../../utils/weatherUtils";
 
 export default function index() {
   const router = useRouter();
-  const { index ,id} = router.query;
+  const { index, id } = router.query;
   const [weatherData, setWeatherData] = useState([]);
   const [selectedCity, setSelectedCity] = useState(null);
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function index() {
       try {
         setWeatherData(await loadWeatherData());
       } catch (error) {
-        appToast("Failed to fetch weather data", "error");
+        appToast(error.message, "error");
       }
     };
 
@@ -33,12 +33,7 @@ export default function index() {
   return (
     <div className="single-city">
       <div className="single-city-logo ">
-        <Image
-          src="/Icon/01.png"
-          width={50}
-          height={50}
-          alt="logo"
-        />
+        <Image src="/Icon/01.png" width={50} height={50} alt="logo" />
         <h1 className="single-city-appName ">Weather App</h1>
       </div>
       <div className="single-city-card ">

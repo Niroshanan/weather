@@ -11,8 +11,8 @@ export const getWeather = async (cityId) => {
       `${apiURL}id=${cityId}&units=metric&appid=${apiKey}`
     );
     return data;
-  } catch(err) {
-    console.log('error from api', err);
+  } catch (err) {
+    console.log("error from api", err);
     throw err;
   }
 };

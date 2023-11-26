@@ -5,8 +5,8 @@ import { getCardBgColour } from "../utils/getCardBgColour";
 
 const SingleWeatherCard = ({ city, index }) => {
   return (
-    <div className={`single-weather-card ${getCardBgColour(index)}`}>
-      <div className="location-time" >
+    <div className={`single-weather-card bg-${index % 5}`}>
+      <div className="location-time">
         <div className="location">
           {city.name},{city.sys.country}
         </div>
@@ -28,7 +28,9 @@ const SingleWeatherCard = ({ city, index }) => {
         </div>
 
         <div>
-          <div className="temp-display" >{Math.round(city.main.temp)}&#8451;</div>
+          <div className="temp-display">
+            {Math.round(city.main.temp)}&#8451;
+          </div>
           <div>Temp Min: {Math.round(city.main.temp_min)}&#8451;</div>
           <div>Temp Max: {Math.round(city.main.temp_max)}&#8451;</div>
         </div>
@@ -44,7 +46,7 @@ const SingleWeatherCard = ({ city, index }) => {
         <div>
           <div>
             <Image
-            className="degree-icon"
+              className="degree-icon"
               src="/Icon/deg.png"
               width={22}
               height={22}

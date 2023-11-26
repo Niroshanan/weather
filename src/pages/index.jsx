@@ -13,7 +13,7 @@ export default function Home() {
         const data = await loadWeatherData();
         setWeatherData(data);
       } catch (error) {
-        appToast("Failed to fetch weather data", "error");
+        appToast(error.message, "error");
       }
     }
 

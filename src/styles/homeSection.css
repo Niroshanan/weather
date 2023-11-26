@@ -23,11 +23,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-
-    @media (min-width: 768px) {
-        flex-direction: row;
-    }
 }
+
+
 
 .city-input {
     width: 100%;
@@ -35,11 +33,6 @@
     background-color: rgb(41 37 36);
     color: #ffffff;
     border-radius: 8px;
-
-    @media (min-width: 640px) {
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-    }
 }
 
 .add-button {
@@ -55,8 +48,22 @@
     border-radius: 8px;
     margin-top: 8px;
 
-    @media (min-width: 640px) {
+}
+
+@media (min-width: 640px) {
+    .add-button {
         margin-top: 0px;
         position: absolute;
+    }
+
+    .city-input {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+}
+
+@media (min-width: 768px) {
+    .searchBox {
+        flex-direction: row;
     }
 }

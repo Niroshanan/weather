@@ -5,7 +5,7 @@ import { getCardBgColour } from "../utils/getCardBgColour";
 
 const WeatherCards = ({ city, index }) => {
   return (
-    <div className={`weather-card  ${getCardBgColour(index)}`}>
+    <div className={`weather-card  bg-${index % 5}`}>
       <div className="weather-top ">
         <div className="location-info ">
           <div>
