@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import { formatDate, formatSunTime } from "../utils/loadDateTime";
-import { getCardBgColour } from "../utils/getCardBgColour";
 
 const SingleWeatherCard = ({ city, index }) => {
   return (
