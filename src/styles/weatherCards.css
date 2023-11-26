@@ -6,6 +6,29 @@
   height: max-content;
 }
 
+.bg-0 {
+  background-color: #3B82F6;
+}
+
+.bg-1 {
+  background-color: #8B5CF6;
+  ;
+}
+
+.bg-2 {
+  background-color: #10B981;
+  ;
+}
+
+.bg-3 {
+  background-color: #F97316;
+}
+
+.bg-4 {
+  background-color: #EF4444;
+  ;
+}
+
 .weather-top {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -91,7 +114,9 @@
   .main-temp {
     font-size: 30px;
   }
-  .weather-top, .weather-bottom{
+
+  .weather-top,
+  .weather-bottom {
     display: flex;
     flex-direction: column;
     padding: 16px;

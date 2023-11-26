@@ -1,56 +1,44 @@
-import WeatherCards from "../../Components/WeatherCards";
-import { getWeather } from "../../api/api";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import SingleWeatherCard from "../../Components/SingleWeatherCard";
-import { useQuery } from "react-query";
-import { useEffect } from "react";
-import { data } from "autoprefixer";
+import { useState, useEffect } from "react";
 import { appToast } from "../../utils/appToast";
+import { loadWeatherData } from "../../utils/weatherUtils";
 
 export default function index() {
   const router = useRouter();
   const { index, id } = router.query;
-  const {
-    data: weatherData,
-    error,
-    isError,
-    isLoading,
-    refetch: fetchData,
-  } = useQuery({
-    queryKey: ["singleCityWeather", { id }],
-    queryFn: () => getWeather(id),
-    enabled: false,
-    staleTime: 5 * 60 * 1000,
-  });
-
+  const [weatherData, setWeatherData] = useState([]);
+  const [selectedCity, setSelectedCity] = useState(null);
   useEffect(() => {
+    const loadData = async () => {
+      try {
+        setWeatherData(await loadWeatherData());
+      } catch (error) {
+        appToast(error.message, "error");
+      }
+    };
+
     if (router.isReady) {
-      fetchData();
+      loadData();
     }
   }, [router.isReady]);
 
   useEffect(() => {
-    if (isError) {
-      appToast(error.message, "error");
+    if (weatherData.length > 0) {
+      const city = weatherData.find((item) => item.id == id);
+      setSelectedCity(city);
     }
-  }, [isError]);
-
+  }, [weatherData]);
   return (
     <div className="single-city">
       <div className="single-city-logo ">
-        <Image
-          src="/Icon/01.png"
-          width={50}
-          height={50}
-          alt="logo"
-          style={{ width: "auto", height: "auto" }}
-        />
+        <Image src="/Icon/01.png" width={50} height={50} alt="logo" />
         <h1 className="single-city-appName ">Weather App</h1>
       </div>
       <div className="single-city-card ">
-        {!isLoading && weatherData && (
-          <SingleWeatherCard city={weatherData} index={index} />
+        {router.isReady && selectedCity && (
+          <SingleWeatherCard city={selectedCity} index={index} />
         )}
       </div>
     </div>
