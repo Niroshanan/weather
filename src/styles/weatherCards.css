@@ -106,10 +106,6 @@
 }
 
 @media (max-width: 640px) {
-  .weather-top {
-    padding: 16px;
-  }
-
   .city-details {
     font-size: 20px;
     line-height: 28px;
