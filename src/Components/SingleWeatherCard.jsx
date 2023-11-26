@@ -1,10 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import { formatDate, formatSunTime } from "../utils/loadDateTime";
+import { getCardBgColour } from "../utils/getCardBgColour";
 
 const SingleWeatherCard = ({ city, index }) => {
   return (
-    <div className={`single-weather-card bg-${index % 5}`}>
+    <div className={`single-weather-card ${getCardBgColour(index)}`}>
       <div className="location-time">
         <div className="location">
           {city.name},{city.sys.country}

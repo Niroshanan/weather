@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { appToast } from "../../utils/appToast";
 import { loadWeatherData } from "../../utils/weatherUtils";
 
-export default function index() {
+export default function Index() {
   const router = useRouter();
   const { index, id } = router.query;
   const [weatherData, setWeatherData] = useState([]);
