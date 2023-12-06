@@ -24,7 +24,7 @@ export default function Home() {
     <main className="main">
       <div>
         <HomeSection />
-        {weatherData && (<WeatherSection weather={weatherData} />)}
+        {weatherData && <WeatherSection weather={weatherData} />}
       </div>
     </main>
   );

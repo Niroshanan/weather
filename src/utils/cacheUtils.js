@@ -1,5 +1,5 @@
-export const getCachedWeatherData = () => {
-  const cachedData = localStorage.getItem("weatherData");
+export const getCachedWeatherData = (cityCode) => {
+  const cachedData = localStorage.getItem(`city${cityCode}`);
   const cachedTimestamp = localStorage.getItem("weatherDataTimestamp");
 
   if (cachedData && cachedTimestamp) {
@@ -14,7 +14,6 @@ export const getCachedWeatherData = () => {
 };
 
 export const cacheWeatherData = (weatherData) => {
-  localStorage.setItem("weatherData", JSON.stringify(weatherData));
+  localStorage.setItem(`city${weatherData.id}`, JSON.stringify(weatherData));
   localStorage.setItem("weatherDataTimestamp", new Date().getTime().toString());
 };
-

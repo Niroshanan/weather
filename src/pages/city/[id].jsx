@@ -3,17 +3,16 @@ import Image from "next/image";
 import SingleWeatherCard from "../../Components/SingleWeatherCard";
 import { useState, useEffect } from "react";
 import { appToast } from "../../utils/appToast";
-import { loadWeatherData } from "../../utils/weatherUtils";
+import { loadSingleWeatherData } from "../../utils/weatherUtils";
 
 export default function Index() {
   const router = useRouter();
   const { index, id } = router.query;
-  const [weatherData, setWeatherData] = useState([]);
   const [selectedCity, setSelectedCity] = useState(null);
   useEffect(() => {
     const loadData = async () => {
       try {
-        setWeatherData(await loadWeatherData());
+        setSelectedCity(await loadSingleWeatherData(id));
       } catch (error) {
         appToast(error.message, "error");
       }
@@ -24,12 +23,6 @@ export default function Index() {
     }
   }, [router.isReady]);
 
-  useEffect(() => {
-    if (weatherData.length > 0) {
-      const city = weatherData.find((item) => item.id == id);
-      setSelectedCity(city);
-    }
-  }, [weatherData]);
   return (
     <div className="single-city">
       <div className="single-city-logo ">
