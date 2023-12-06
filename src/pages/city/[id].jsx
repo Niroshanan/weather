@@ -4,6 +4,7 @@ import SingleWeatherCard from "../../Components/SingleWeatherCard";
 import { useState, useEffect } from "react";
 import { appToast } from "../../utils/appToast";
 import { loadSingleWeatherData } from "../../utils/weatherUtils";
+import { WEATHER_APP_NAME, WEATHER_ICON_ALT_NAME, WEATHER_ICON_PATH } from "../../constants/pageConstants";
 
 export default function Index() {
   const router = useRouter();
@@ -26,8 +27,8 @@ export default function Index() {
   return (
     <div className="single-city">
       <div className="single-city-logo ">
-        <Image src="/Icon/01.png" width={50} height={50} alt="logo" />
-        <h1 className="single-city-appName ">Weather App</h1>
+        <Image src={WEATHER_ICON_PATH} width={50} height={50} alt={WEATHER_ICON_ALT_NAME} />
+        <h1 className="single-city-appName ">{WEATHER_APP_NAME}</h1>
       </div>
       <div className="single-city-card ">
         {router.isReady && selectedCity && (

@@ -1,7 +1,8 @@
 import React from "react";
+import { FOOTER_LABEL } from "../constants/pageConstants";
 
 const Footer = () => {
-  return <footer className="footer">2021 Fidenz Technologies</footer>;
+  return <footer className="footer">{FOOTER_LABEL}</footer>;
 };
 
 export default Footer;

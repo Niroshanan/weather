@@ -1,5 +1,5 @@
-import citiesData from "../api/cities.json";
+import citiesData from "../../public/cities.json";
 
 export const loadCitiesData = async () => {
-  return citiesData.cities;
+  return citiesData.List;
 };
