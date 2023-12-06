@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import {
   ADD_CITY_BUTTON,
+  PLACEHOLDER_LABEL,
   WEATHER_APP_NAME,
   WEATHER_ICON_ALT_NAME,
   WEATHER_ICON_PATH,
@@ -22,7 +23,11 @@ const HomeSection = () => {
       </div>
 
       <div className="searchBox">
-        <input type="text" className="city-input" placeholder="Enter a City" />
+        <input
+          type="text"
+          className="city-input"
+          placeholder={PLACEHOLDER_LABEL}
+        />
         <button className="add-button">{ADD_CITY_BUTTON}</button>
       </div>
     </section>

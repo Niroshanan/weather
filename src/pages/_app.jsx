@@ -12,7 +12,6 @@ export default function MyApp({ Component, pageProps }) {
     <div>
       <ToastContainer />
       <Component {...pageProps} />
-      <Footer />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import HomeSection from "../Components/HomeSection";
 import WeatherSection from "../Components/WeatherSection";
 import { loadWeatherData } from "../utils/weatherUtils";
 import { appToast } from "../utils/appToast";
+import Footer from "../Components/Footer";
 
 export default function Home() {
   const [weatherData, setWeatherData] = useState([]);
@@ -25,6 +26,7 @@ export default function Home() {
       <div>
         <HomeSection />
         {weatherData && <WeatherSection weather={weatherData} />}
+        <Footer />
       </div>
     </main>
   );

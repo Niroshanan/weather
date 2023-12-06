@@ -4,6 +4,8 @@ import { formatDate, formatSunTime } from "../utils/loadDateTime";
 import { getCardBgColour } from "../utils/getCardBgColour";
 import {
   CELSIUS_UNIT,
+  CLOSE_ICON_ALT_NAME,
+  CLOSE_ICON_PATH,
   DEGREE_ICON_ALT_NAME,
   DEGREE_ICON_PATH,
   DEGREE_LABEL,
@@ -23,6 +25,17 @@ import {
 const WeatherCards = ({ city, index }) => {
   return (
     <div className={`weather-card  ${getCardBgColour(index)}`}>
+      <button
+        className="close-button rounded-full"
+        onClick={(e) => e.preventDefault()}
+      >
+        <Image
+          src={CLOSE_ICON_PATH}
+          width={25}
+          height={25}
+          alt={CLOSE_ICON_ALT_NAME}
+        />
+      </button>
       <div className="weather-top ">
         <div className="location-info ">
           <div>

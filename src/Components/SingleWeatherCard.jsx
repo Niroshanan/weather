@@ -82,7 +82,8 @@ const SingleWeatherCard = ({ city, index }) => {
             {PRESSURE_UNIT}
           </div>
           <div>
-            {HUMIDITY_LABEL} {city.main.humidity}{PERCENTAGE_UNIT}
+            {HUMIDITY_LABEL} {city.main.humidity}
+            {PERCENTAGE_UNIT}
           </div>
           <div>
             {VISIBILITY_LABEL} {(city.visibility / 1000).toFixed(1)}
