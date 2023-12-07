@@ -1,4 +1,3 @@
-import Footer from "../Components/Footer";
 import "../styles/globals.css";
 import "../styles/weatherCards.css";
 import "../styles/singleWeatherCard.css";

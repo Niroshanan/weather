@@ -1,6 +1,6 @@
-const { default: axios } = require("axios");
-
 import { API_URL, API_KEY, UNITS } from "../constants/apiConfig";
+
+const { default: axios } = require("axios");
 
 export const getWeather = async (cityId) => {
   try {
