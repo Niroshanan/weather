@@ -1,6 +1,8 @@
+import { WEATHER_DATA_TIME_STAMP_CACHE_LABEL } from "../constants/utilConstant";
+
 export const getCachedWeatherData = (cityCode) => {
   const cachedData = localStorage.getItem(`city${cityCode}`);
-  const cachedTimestamp = localStorage.getItem("weatherDataTimestamp");
+  const cachedTimestamp = localStorage.getItem(WEATHER_DATA_TIME_STAMP_CACHE_LABEL);
 
   if (cachedData && cachedTimestamp) {
     const currentTime = new Date().getTime();
@@ -15,5 +17,5 @@ export const getCachedWeatherData = (cityCode) => {
 
 export const cacheWeatherData = (weatherData) => {
   localStorage.setItem(`city${weatherData.id}`, JSON.stringify(weatherData));
-  localStorage.setItem("weatherDataTimestamp", new Date().getTime().toString());
+  localStorage.setItem(WEATHER_DATA_TIME_STAMP_CACHE_LABEL, new Date().getTime().toString());
 };
