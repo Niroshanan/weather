@@ -7,8 +7,10 @@ import WeatherCards from "../Components/WeatherCards";
 export const loadWeatherData = async () => {
   try {
     const cities = await loadCitiesData();
+    cities.sort((a,b) =>(a.Temp - b.Temp));
     const weatherRes = await Promise.all(
       cities.map(async (city, i) => {
+        console.log("City Temp",`${city.Temp} ${city.CityName}`)
         const cityWeatherData = await loadSingleWeatherData(city.CityCode);
         return (
           <Link

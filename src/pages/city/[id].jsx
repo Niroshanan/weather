@@ -9,6 +9,7 @@ import {
   WEATHER_ICON_ALT_NAME,
   WEATHER_ICON_PATH,
 } from "../../constants/pageConstants";
+import { getWeather } from "../../api/api";
 
 export default function Index() {
   const router = useRouter();
@@ -17,7 +18,7 @@ export default function Index() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        setSelectedCity(await loadSingleWeatherData(id));
+        setSelectedCity(await getWeather(id));
       } catch (error) {
         appToast(error.message, "error");
       }
