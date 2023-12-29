@@ -8,7 +8,7 @@ const UserDetails = ({ user }) => {
         <img src={user.picture} alt={user.name} width={50} />
         <h1 className="font-semibold px-2">{user.name}</h1>
       </div>
-      <div className="flex flex-row-reverse h-fit">
+      <div className="flex flex-row justify-end h-fit ">
         <Link
           className="px-4 py-2 bg-cyan-600 rounded-xl hover:bg-cyan-800"
           href={"/api/auth/logout"}
