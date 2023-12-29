@@ -9,7 +9,7 @@ import {
   WEATHER_ICON_ALT_NAME,
   WEATHER_ICON_PATH,
 } from "../../constants/pageConstants";
-import { getWeather } from "../../api/api";
+import { getWeather } from "../../pages/api/api";
 
 export default function Index() {
   const router = useRouter();

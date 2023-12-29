@@ -4,9 +4,13 @@ import WeatherSection from "../Components/WeatherSection";
 import { loadWeatherData } from "../utils/weatherUtils";
 import { appToast } from "../utils/appToast";
 import Footer from "../Components/Footer";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import Login from "../Components/login";
+import UserDetails from "../Components/UserDetails";
 
 export default function Home() {
   const [weatherData, setWeatherData] = useState([]);
+  const { user, error, isLoading } = useUser();
 
   useEffect(() => {
     async function loadData() {
@@ -24,8 +28,10 @@ export default function Home() {
   return (
     <main className="main">
       <div>
+        {!user && <Login/>}
+        {user && <UserDetails user = {user}/>}
         <HomeSection />
-        {weatherData && <WeatherSection weather={weatherData} />}
+        {user && weatherData && <WeatherSection weather={weatherData} />}
         <Footer />
       </div>
     </main>

@@ -1,4 +1,4 @@
-import { API_URL, API_KEY, UNITS } from "../constants/apiConfig";
+import { API_URL, API_KEY, UNITS } from "../../constants/apiConfig";
 
 const { default: axios } = require("axios");
 

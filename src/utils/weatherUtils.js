@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getWeather } from "../api/api";
+import { getWeather } from "../pages/api/api";
 import { cacheWeatherData, getCachedWeatherData } from "./cacheUtils";
 import { loadCitiesData } from "./loadCities";
 import WeatherCards from "../Components/WeatherCards";
