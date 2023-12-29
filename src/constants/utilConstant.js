@@ -12,3 +12,7 @@ export const PURPLE = "bg-purple-500";
 export const GREEN = "bg-green-500";
 export const ORANGE = "bg-orange-500";
 export const RED = "bg-red-500";
+
+//cache constants
+
+export const CACHE_DURATION = 5 * 60 * 1000;

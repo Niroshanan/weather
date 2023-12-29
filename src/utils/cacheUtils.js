@@ -1,4 +1,4 @@
-import { WEATHER_DATA_TIME_STAMP_CACHE_LABEL } from "../constants/utilConstant";
+import { WEATHER_DATA_TIME_STAMP_CACHE_LABEL, CACHE_DURATION } from "../constants/utilConstant";
 
 export const getCachedWeatherData = (cityCode) => {
   const cachedData = localStorage.getItem(`city${cityCode}`);
@@ -6,7 +6,7 @@ export const getCachedWeatherData = (cityCode) => {
 
   if (cachedData && cachedTimestamp) {
     const currentTime = new Date().getTime();
-    const expirationTime = parseInt(cachedTimestamp, 10) + 5 * 60 * 1000;
+    const expirationTime = parseInt(cachedTimestamp, 10) + CACHE_DURATION;
 
     if (currentTime < expirationTime) {
       return JSON.parse(cachedData);
