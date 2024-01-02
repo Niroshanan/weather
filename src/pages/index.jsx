@@ -24,7 +24,7 @@ export default function Home() {
 
     loadData();
   }, []);
-  
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
@@ -32,8 +32,12 @@ export default function Home() {
     <main className="main">
       <div>
         {!user && <Login/>}
-        {user && <UserDetails user = {user}/>}
-        <HomeSection />
+        {user && (
+          <div>
+            <UserDetails user={user} />
+            <HomeSection />
+          </div>
+        )}
         {user && weatherData && <WeatherSection weather={weatherData} />}
         <Footer />
       </div>
